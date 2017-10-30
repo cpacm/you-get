@@ -248,3 +248,6 @@ class VideoExtractor():
         keep_obj = kwargs.get('keep_obj', False)
         if not keep_obj:
             self.__init__()
+
+    def get_json(self):
+        return json_output.output(self)

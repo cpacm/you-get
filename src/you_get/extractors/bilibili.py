@@ -342,3 +342,4 @@ download = site.download_by_url
 download_playlist = bilibili_download_playlist_by_url
 
 bilibili_download = download
+get_json = site.get_json

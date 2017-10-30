@@ -294,3 +294,4 @@ site = Iqiyi()
 download = site.download_by_url
 iqiyi_download_by_vid = site.download_by_vid
 download_playlist = site.download_playlist_by_url
+get_json = site.get_json

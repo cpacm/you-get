@@ -24,9 +24,13 @@ def output(video_extractor, pretty_print=True):
     if extra:
         out["extra"] = extra
     if pretty_print:
-        print(json.dumps(out, indent=4, sort_keys=True, ensure_ascii=False))
+        json_parser = json.dumps(out, indent=4, sort_keys=True, ensure_ascii=False)
+        # print(json_parser)
+        return json_parser
     else:
-        print(json.dumps(out))
+        json_parser = json.dumps(out)
+        # print(json.dumps(out))
+        return json_parser
 
 # a fake VideoExtractor object to save info
 class VideoExtractor(object):
