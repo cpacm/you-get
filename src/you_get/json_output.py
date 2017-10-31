@@ -1,8 +1,8 @@
-
 import json
 
 # save info from common.print_info()
 last_info = None
+
 
 def output(video_extractor, pretty_print=True):
     ve = video_extractor
@@ -23,18 +23,19 @@ def output(video_extractor, pretty_print=True):
         extra["ua"] = ve.ua
     if extra:
         out["extra"] = extra
+    global global_json
     if pretty_print:
-        json_parser = json.dumps(out, indent=4, sort_keys=True, ensure_ascii=False)
-        # print(json_parser)
-        return json_parser
+        global_json = json.dumps(out, indent=4, sort_keys=True, ensure_ascii=False)
+        # print(global_json)
     else:
-        json_parser = json.dumps(out)
-        # print(json.dumps(out))
-        return json_parser
+        global_json = json.dumps(out)
+        # print(global_json)
+
 
 # a fake VideoExtractor object to save info
 class VideoExtractor(object):
     pass
+
 
 def print_info(site_info=None, title=None, type=None, size=None):
     global last_info
@@ -45,13 +46,14 @@ def print_info(site_info=None, title=None, type=None, size=None):
     ve.title = title
     ve.url = None
 
+
 def download_urls(urls=None, title=None, ext=None, total_size=None, refer=None):
     ve = last_info
     if not ve:
         ve = VideoExtractor()
         ve.name = ''
         ve.url = urls
-        ve.title=title
+        ve.title = title
     # save download info in streams
     stream = {}
     stream['container'] = ext
@@ -64,3 +66,5 @@ def download_urls(urls=None, title=None, ext=None, total_size=None, refer=None):
     ve.streams['__default__'] = stream
     output(ve)
 
+
+global_json = None
